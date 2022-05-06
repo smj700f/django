@@ -90,7 +90,7 @@ C:.
             urls.py
             wsgi.py
             __init__.py
-            ```
+```
 ## 切入example資料夾
 ```
 cd firstproject
