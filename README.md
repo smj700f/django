@@ -468,7 +468,7 @@ urlpatterns = [
 ]
 
 ```
-### 加入HttpResponse模組，sayhello函數，呼叫sayhello函數後，儲存`settings.py`
+### 加入HttpResponse模組，sayhello函數，呼叫sayhello函數後，儲存`urls.py`
 ```
 from django.contrib import admin
 from django.urls import path
@@ -502,7 +502,7 @@ urlpatterns = [
 ]
 
 ```
-### 加入以下hello2函數及呼叫hello2，儲存`settings.py`
+### 加入以下hello2函數及呼叫hello2，儲存`urls.py`
 ```
 from django.contrib import admin
 from django.urls import path
@@ -649,3 +649,5 @@ urlpatterns = [
     path('hello4/<str:username>', hello4),
 ]
 ```
+#### 設定完成後在 瀏覽器輸入`http://127.0.0.1:8000/hello4/username`，或F5鍵重新整理網頁
+#### `username`是你個人電腦的使用者名稱，例如`d4071`
