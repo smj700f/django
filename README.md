@@ -108,7 +108,7 @@ md static
 
 ```
 ## 將模型同步到資料庫
-### 資料庫檔案位置`C:\example\firstproject\db.sqlite3`
+#### 資料庫檔案位置`C:\example\firstproject\db.sqlite3`
 ```
 python manage.py migrate
 
