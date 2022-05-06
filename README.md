@@ -11,6 +11,13 @@
 - [切入example資料夾](#切入example資料夾)
 - [建立firstproject專案資料夾](#建立firstproject專案資料夾)
 - [顯示firstproject有哪些項目](#顯示firstproject有哪些項目)
+- [顯示firstproject樹狀目錄](#顯示firstproject樹狀目錄)
+- [切入example資料夾](#切入example資料夾)
+- [建立Application應用程式](#建立Application應用程式)
+- [啟動伺服器](#啟動伺服器)
+- [建立templates目錄](#建立templates目錄)
+- [建立static目錄](#建立static目錄)
+- [將模型同步到資料庫(db.sqlite3檔案)](#將模型同步到資料庫(db.sqlite3檔案))
 
 ## 建置Django虛擬環境
 ```
@@ -100,7 +107,7 @@ md templates
 md static
 
 ```
-## 模型與資料庫同步到db.sqlite3檔案
+## 將模型同步到資料庫(db.sqlite3檔案)
 ```
 python manage.py migrate
 
