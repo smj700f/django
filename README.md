@@ -17,7 +17,7 @@
 - [啟動伺服器](#啟動伺服器)
 - [建立templates目錄](#建立templates目錄)
 - [建立static目錄](#建立static目錄)
-- [將模型同步到資料庫(db.sqlite3檔案)](#將模型同步到資料庫(db.sqlite3檔案))
+- [將模型同步到資料庫](#將模型同步到資料庫)
 
 ## 建置Django虛擬環境
 ```
@@ -107,7 +107,8 @@ md templates
 md static
 
 ```
-## 將模型同步到資料庫(db.sqlite3檔案)
+## 將模型同步到資料庫
+### 資料庫檔案位置`C:\example\firstproject\db.sqlite3`
 ```
 python manage.py migrate
 
