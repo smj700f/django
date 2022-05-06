@@ -79,6 +79,16 @@ dir firstproject
 tree /f
 
 ```
+C:.
+└─firstproject
+    │  manage.py
+    │
+    └─firstproject
+            asgi.py
+            settings.py
+            urls.py
+            wsgi.py
+            __init__.py
 ## 切入example資料夾
 ```
 cd firstproject
