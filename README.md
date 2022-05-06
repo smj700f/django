@@ -74,11 +74,21 @@ django-admin startproject firstproject
 dir firstproject
 
 ```
+### 輸出：
+```
+2022/05/06  上午 07:27    <DIR>          .
+2022/05/06  上午 07:27    <DIR>          ..
+2022/05/06  上午 07:27    <DIR>          firstproject
+2022/05/06  上午 07:27               690 manage.py
+               1 個檔案             690 位元組
+               3 個目錄  250,895,433,728 位元組可用
+```
 ## 顯示firstproject樹狀目錄
 ```
 tree /f
 
 ```
+### 輸出：
 ```
 C:.
 └─firstproject
