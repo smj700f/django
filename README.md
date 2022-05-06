@@ -18,6 +18,7 @@
 - [建立templates目錄](#建立templates目錄)
 - [建立static目錄](#建立static目錄)
 - [將模型同步到資料庫](#將模型同步到資料庫)
+# 環境設定
 
 ## 建置Django虛擬環境
 ```
@@ -313,4 +314,329 @@ Running migrations:
   Applying auth.0012_alter_user_first_name_max_length... OK
   Applying sessions.0001_initial... OK
   #### 輸出：
+```
+## DEBUG除錯模式設定
+#### `settings.py`檔案路徑位置：`C:\example\firstproject\firstproject\settings.py`
+### 啟動伺服器上線之前，開啟`settings.py`，將`DEBUG`模式設定為`False`
+```
+DEBUG = False
+
+```
+### 下線之後，開啟`settings.py`，將`DEBUG`模式設定為`True`
+```
+DEBUG = True
+
+```
+## 加入Application應用程式
+#### `settings.py`檔案路徑位置：`C:\example\firstproject\firstproject\settings.py`
+### 開啟`settings.py`，找到以下位置
+```
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+```
+### 加入`'myapp', #新增的app`後，儲存`settings.py`
+```
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp', #新增的app
+]
+
+```
+## 設定Template路徑
+#### `settings.py`檔案路徑位置：`C:\example\firstproject\firstproject\settings.py`
+### 開啟`settings.py`，找到以下位置
+```
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+```
+### 在`'DIRS': []`中,加入`BASE_DIR / 'templates'`後，儲存`settings.py`
+```
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+```
+## 設定static靜態檔路徑
+#### `settings.py`檔案路徑位置：`C:\example\firstproject\firstproject\settings.py`
+### 開啟`settings.py`，找到以下位置
+```
+STATIC_URL = '/static/'
+
+```
+### 加入以下路徑後，儲存`settings.py`
+```
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static' #加入static路徑
+]
+
+```
+## 設定中文語系和時區
+#### `settings.py`檔案路徑位置：`C:\example\firstproject\firstproject\settings.py`
+### 開啟`settings.py`，找到以下位置
+```
+# Internationalization
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+```
+### 設定以下配置後，儲存`settings.py`
+```
+# Internationalization
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
+
+LANGUAGE_CODE = 'zh-hant'
+
+TIME_ZONE = 'Asia/Taipei'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+```
+## 開始寫網頁sayhello
+#### `urls.py`檔案路徑位置：`C:\example\firstproject\firstproject\urls.py`
+### 開啟`urls.py`
+```
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+```
+### 加入HttpResponse模組，sayhello函數，呼叫sayhello函數後，儲存`settings.py`
+```
+from django.contrib import admin
+from django.urls import path
+from django.http import HttpResponse
+
+def sayhello(request):
+    return HttpResponse("Hello Django！")
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', sayhello),
+]
+
+```
+#### 設定完成後在 瀏覽器輸入`http://127.0.0.1:8000/`，或F5鍵重新整理網頁
+
+## 網址傳送參數，顯示網頁
+#### `urls.py`檔案路徑位置：`C:\example\firstproject\firstproject\urls.py`
+### 開啟`urls.py`
+```
+from django.contrib import admin
+from django.urls import path
+from django.http import HttpResponse
+
+def sayhello(request):
+    return HttpResponse("Hello Django！")
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', sayhello),
+]
+
+```
+### 加入以下hello2函數及呼叫hello2，儲存`settings.py`
+```
+from django.contrib import admin
+from django.urls import path
+from django.http import HttpResponse
+
+def sayhello(request):
+    return HttpResponse("Hello Django！")
+
+def hello2(request, username):
+    return HttpResponse("Hello " + username)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', sayhello),
+    path('hello2/<str:username>', hello2),
+]
+
+```
+#### 設定完成後在 瀏覽器輸入`http://127.0.0.1:8000/hello2/username`，或F5鍵重新整理網頁
+#### `username`是你個人電腦的使用者名稱，例如`d4071`
+
+## 模板的使用
+#### 在`C:\example\firstproject\templates`路徑中，新增hello3.html檔案
+### 加入以下程式碼
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>第一個模板</title>
+</head>
+<body>
+    <h1> 歡迎光臨：{{username}} </h1>
+    <h2> 現在時刻：{{now}} </h2>
+</body>
+</html>
+
+```
+#### 在`C:\example\firstproject\myapp\views.py`路徑中，開啟`views.py`
+### 加入datetime模組，hello3函數
+```
+from django.shortcuts import render
+from datetime import datetime
+# Create your views here.
+def hello3(request, username):
+    now = datetime.now()
+    return render(request, "hello3.html", locals())
+
+```
+#### 在`"C:\example\firstproject\firstproject\urls.py"`路徑中，開啟`urls.py`
+### 加入hello3函數，呼叫hello3函數
+```
+from django.contrib import admin
+from django.urls import path
+from django.http import HttpResponse
+from myapp.views import hello3
+
+def sayhello(request):
+    return HttpResponse("Hello Django！")
+
+def hello2(request, username):
+    return HttpResponse("Hello " + username)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', sayhello),
+    path('hello2/<str:username>', hello2),
+    path('hello3/<str:username>', hello3),
+]
+```
+#### 設定完成後在 瀏覽器輸入`http://127.0.0.1:8000/hello3/username`，或F5鍵重新整理網頁
+#### `username`是你個人電腦的使用者名稱，例如`d4071`
+
+## 加入靜態檔案
+#### 在`C:\example\firstproject\static`路徑中，新增css資料夾
+#### 在`C:\example\firstproject\static\css`路徑中，新增style.css檔案
+### 開啟`style.css`後，加入以下程式碼
+```
+.info {
+    color:red;
+    font-size: 1.5em;
+}
+
+```
+#### 在`C:\example\firstproject\static`路徑中，新增images資料夾
+#### 在`C:\example\firstproject\static\images`路徑中，加入圖片檔後，命名為`ball.png`
+- [圖片檔範例下載](https://pngimg.com/uploads/football/football_PNG52797.png)
+
+#### 在`C:\example\firstproject\templates`路徑中，新增hello4.html檔案
+### 開啟`hello4.html`後，加入以下程式碼
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>第一個模板</title>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="home">
+        <img src="{% static 'images/ball.png' %}" alt="歡迎光臨：" width="32" height="32" />
+        <span class="info"> 歡迎光臨：{{username}} </span>
+        <h2> 現在時刻：{{now}} </h2>
+    </div>
+</body>
+</html>
+
+```
+
+#### 在`C:\example\firstproject\myapp\views.py`路徑中，開啟`views.py`
+### 加入datetime模組，hello4函數
+```
+from django.shortcuts import render
+from datetime import datetime
+# Create your views here.
+def hello3(request, username):
+    now = datetime.now()
+    return render(request, "hello3.html", locals())
+
+def hello4(request, username):
+    now = datetime.now()
+    return render(request, "hello4.html", locals())
+```
+#### 在`"C:\example\firstproject\firstproject\urls.py"`路徑中，開啟`urls.py`
+### 加入hello4函數，呼叫hello4函數
+```
+from django.contrib import admin
+from django.urls import path
+from django.http import HttpResponse
+from myapp.views import hello3, hello4
+
+def sayhello(request):
+    return HttpResponse("Hello Django！")
+
+def hello2(request, username):
+    return HttpResponse("Hello " + username)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', sayhello),
+    path('hello2/<str:username>', hello2),
+    path('hello3/<str:username>', hello3),
+    path('hello4/<str:username>', hello4),
+]
 ```
