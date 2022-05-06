@@ -17,7 +17,7 @@ conda create -n Django python=3.6 -y
 ```
 ## 進入Django虛擬環境
 ```
-conda create -n Django python=3.6 -y
+conda activate django
 
 ```
 ## 安裝django
@@ -40,6 +40,7 @@ pip install -U Django
 pip list
 
 ```
+# 建立 Django 專案
 ## 切入根目錄路徑
 ```
 cd \
@@ -47,7 +48,7 @@ cd \
 ```
 ## 建立example資料夾
 ```
-建立example資料夾
+mkdir example
 
 ```
 ## 切入example資料夾
@@ -70,8 +71,36 @@ dir firstproject
 tree /f
 
 ```
+## 切入example資料夾
+```
+cd firstproject
+
+```
 ## 建立Application應用程式
 ```
-python manage.py startapp
+python manage.py startapp myapp
+
+```
+## 啟動伺服器
+```
+python manage.py runserver
+
+```
+#### `firstproject.setting` 為環境的設定檔
+#### `http://127.0.0.1:8000/` 為開啟伺服器網址
+
+## 建立templates目錄
+```
+md templates
+
+```
+## 建立static目錄
+```
+md static
+
+```
+## 模型與資料庫同步到db.sqlite3檔案
+```
+python manage.py migrate
 
 ```
