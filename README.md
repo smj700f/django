@@ -1,9 +1,11 @@
-- [建置Django虛擬環境](#建置Django虛擬環境)
+# 建立 Django 虛擬環境
+- [建立Django虛擬環境](#建置Django虛擬環境)
 - [進入Django虛擬環境](#進入Django虛擬環境)
 - [安裝django](#安裝django)
 - [查看django相關訊息](#查看django相關訊息)
 - [更新django](#更新django)
 - [查看Django環境有哪些套件](#查看Django環境有哪些套件)
+# 建立 Django 專案
 - [切入根目錄路徑](#切入根目錄路徑)
 - [建立example資料夾](#建立example資料夾)
 - [切入example資料夾](#切入example資料夾)
@@ -40,7 +42,6 @@ pip install -U Django
 pip list
 
 ```
-# 建立 Django 專案
 ## 切入根目錄路徑
 ```
 cd \
